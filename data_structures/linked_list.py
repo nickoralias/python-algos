@@ -38,9 +38,12 @@ class LinkedList:
                     prev.next = node
                 else:
                     self.head = node
+                return True
             prev = current
             current = current.next
             index -= 1
+
+        return False
 
     def delete_start(self):
         self.head = self.head.next if self.head else self.head
