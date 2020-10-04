@@ -9,7 +9,7 @@ def merge_sort(lst):
 def merge_helper(left, right):
     i, j = 0, 0
     result = list()
-    
+
     for _ in range(len(left) + len(right)):
         if i == len(left):
             result += right[j:]

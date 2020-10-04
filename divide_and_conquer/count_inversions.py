@@ -5,14 +5,14 @@ def count_inversions(lst):
     if len(lst) <= 1:
         return lst
     else:
-        return merge_and_add_inversions(count_inversions(lst[0:len(lst)//2]), 
+        return merge_and_add_inversions(count_inversions(lst[0:len(lst)//2]),
                             count_inversions(lst[len(lst)//2:]))
 
 # Merge and record inversions
 def merge_and_add_inversions(left, right):
     i, j = 0, 0
     result = list()
-    
+
     for _ in range(len(left) + len(right)):
         if i == len(left):
             result += right[j:]
