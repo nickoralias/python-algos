@@ -1,22 +1,28 @@
 def quicksort(arr):
     if (len(arr) <= 1):
         return arr
+    return partition(arr)
+
+def partition(arr):
     pivot = arr[0]
-    less, greater = partition(arr[1:], pivot)
-    return quicksort(less) + [pivot] + quicksort(greater)
+    i, j = 1, 1
 
-def partition(arr, pivot):
-    less, greater = [], []
+    while (j < len(arr)):
+        if arr[j] < pivot:
+            if i < j:
+                tmp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = tmp
+            i += 1
+        j += 1
 
-    for item in arr:
-        if item < pivot:
-            less.append(item)
-        elif item > pivot:
-            greater.append(item)
-        else:
-            pass # implement later to handle arrays with duplicate elements
+    # swap pivot
+    i -= 1
+    tmp = arr[0]
+    arr[0] = arr[i]
+    arr[i] = tmp
 
-    return [less, greater]
+    return quicksort(arr[:i]) + [arr[i]] + quicksort(arr[i+1:])
 
 def main():
     arr = [9, 4, 2, 5, 8, 3, 1, 7, 6]
